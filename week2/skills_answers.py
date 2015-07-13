@@ -1,5 +1,5 @@
 # To work on the advanced problems, set to True
-ADVANCED = False
+ADVANCED = True
 
 
 def count_unique(input_string):
@@ -120,7 +120,6 @@ def get_pirate_talk(phrase):
         phrase = phrase.replace(english_word,pirate_word)
 
     return phrase
-print get_pirate_talk("my student is not a man")
 
 
 # End of skills. See below for advanced problems.
@@ -128,39 +127,9 @@ print get_pirate_talk("my student is not a man")
 ############################################################################
 
 
-# def adv_get_top_letter(input_string):
-#     """Given an input string, return a list of letter(s) which
-#     appear(s) the most the input string.
-
-#     If there is a tie, the order of the letters in the returned
-#     list should be alphabetical.
-
-#     For example:
-#         >>> adv_get_top_letter("The rain in spain stays mainly in the plain.")
-#         ['i', 'n']
-
-#     If there is not a tie, simply return a list with one item.
-
-#     For example:
-#         >>> adv_get_top_letter("Shake it off, shake it off. Shake it off, Shake it off.")
-#         ['f']
-
-#     Spaces do not count as letters.
-
-#     """
-#     text = ''.join(input_string.split())
-#     letters_set = set([char for char in text])
-#     letters_list = []
-#     for letter in letters_set:
-#         tup = (letter, input_string.count(letter))
-#         #list_of_tuples.append(tup)
-#     return tup    
-
-# print adv_get_top_letter("The rain in spain stays mainly in the plain.")
-
-
-# def adv_alpha_sort_by_word_length(words):
-#     """    
+def adv_get_top_letter(input_string):
+ 
+  
 #     Given a list of words, return a list of tuples, ordered by word-length.
 #     Each tuple should have two items--a number that is a word-length,
 #     and the list of words of that word length. In addition to ordering
@@ -174,8 +143,14 @@ print get_pirate_talk("my student is not a man")
 #         [(1, ['a']), (2, ['an', 'ok']), (3, ['day']), (5, ['apple'])]
 
 #     """
+    words.sort(key = len)
 
-#     return []
+    length_set = set([len(word) for word in words])
+    list_of_tuples = []
+    for i in length_set:
+        tup = (i,[word for word in words if len(word)==i])
+        list_of_tuples.append(tup)
+    return list_of_tuples 
 
 
 ##############################################################################

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link href="{{ url_for('static',filename='css/styles.css') }}" rel="stylesheet">
+    <title>Application Form</title>
+</head>
+<body>
+    <h1>Application Form</h1>
+    <p class="instructions">Please fill out this application form and click the submit button when finished</p>
+    <br>
+    <form action="/application" method="post">
+        <label>First Name: <input type="text" name="firstname"></label>
+        <br>
+        <label id="lastname">Last Name: <input type="text" name="lastname"></label>
+        <br>
+		<label>Salary Requirement: <input type="number" name="salary"></label>
+		<br>
+		Position of Interest <select name="position">
+        	<option name="position" value="Software Engineer">Software Engineer</option>
+        	<option name="position" value="QA Engineer">QA Engineer</option>
+        	<option name="position" value="Product Manager">Product Manager</option></select>
+        <br>	
+       <input type="submit">
+    </form>
+</body>
+</html>

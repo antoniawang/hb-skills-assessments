@@ -61,6 +61,7 @@
       margin-right: 1em;
     }
   </style>
+  <script src="http://code.jquery.com/jquery.js"></script>
 </head>
 <body>
 
@@ -97,7 +98,13 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+var button = document.getElementById('popup-alert-button');
+
+function alertClick() {
+    alert(button.value);
+}
+
+button.addEventListener('click', alertClick);
 </script>
 
 
@@ -115,7 +122,15 @@
 </fieldset>
 
 <script>
-  // code here for above-problem
+var buttonHello = document.getElementById("change-hello-to-goodbye-button");
+
+var changeHello = document.getElementById("message-to-change");
+
+function newMessage() {
+    changeHello.innerText = "Goodbye";
+}
+
+buttonHello.addEventListener('click', newMessage);
 </script>
 
 <div class="hint">
@@ -144,7 +159,19 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+  var submitForm = document.getElementById('prevent-form-submission-form');
+  var submitButton = document.getElementById('prevent-form-submission-button');
+
+  function noSubmit(evt) {
+    alert(submitButton.value);
+    evt.preventDefault();
+  }
+
+submitForm.addEventListener('submit', noSubmit);
+
+
+
+
 </script>
 
 <div class="hint">
@@ -176,20 +203,21 @@
 <script>
 //  Here's a stub of a function you can use!
 
-//  function reverseString() {
-//    var msg = "Porcupines are cute";
-//
-//    // do some stuff here to reverse that string into a new variable
-//    var newMsg = "This should be the reversed string";
-//
-//    alert(newMsg);
-//  }
+ function reverseString() {
+   var msg = "Porcupines are cute";
+
+   // do some stuff here to reverse that string into a new variable
+   var newMsg = msg.split('').reverse().join('');
+
+   alert(newMsg);
+ }
 
 // Here's a stub of event stuff you could use
 //
 
-//  var button = document.getElementById('reverse-string-button');
-//  button.addEventListener('click', reverseString);
+  var button = document.getElementById('reverse-string-button');
+  button.addEventListener('click', reverseString);
+
 </script>
 
 
@@ -213,7 +241,13 @@
 </fieldset>
 
 <script>
-  // code here for above problem
+
+  function popUp(evt) {
+     alert("Pop up please!");
+  }
+
+  $('.tricky-to-find').on('click', popUp)
+
 </script>
 
 <div class="hint">
@@ -240,7 +274,7 @@
 </fieldset>
 
 <script>
-  // put your code here
+  $("img#kittenz-rule").attr("src", "http://static.comicvine.com/uploads/original/13/138382/2676871-lolcats_animals_cats_beating_up_dogs_funny_bb01d0eac7df6a1e53ab245dfb0bcb43_h.png");
 </script>
 
 <div class="hint">
@@ -273,7 +307,17 @@
 </fieldset>
 
 <script>
-  // put your code here
+function changePorcPic(evt) {
+  $("img#cute-porcupine-image").attr("src", "http://mytrial.typepad.com/.a/6a0147e199a17d970b0153906b3209970b-pi");
+  $("img#cute-porcupine-image").fadeIn(3000);
+}
+ $("input#make-a-porcupine").on("click", function(){
+    setTimeout(changePorcPic, 1000);
+
+ });
+  //setTimeout(changePorcPic, 1000));
+
+
 </script>
 
 <div class="hint">
@@ -305,7 +349,10 @@
 </fieldset>
 
 <script>
-  // put your code here
+  $('#agreeable-form').on('submit', function noSubmit(evt) {
+    evt.preventDefault();
+    $("#agreeable-text").html("I like " + $("#favorite-food-input").val() + ", too.");
+  });
 </script>
 
 <div class="hint">

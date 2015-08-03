@@ -75,17 +75,32 @@ def get_brands_summary():
 
 # Part 2.5: Advanced and Optional
 def search_brands_by_name(mystr):
-    pass
+	brands_list = []
+    brands = Brand.query.filter(db.or_(Brand.name == mystr, Brand.name.like('%'+mystr+'%')))
+    for brand in brands.all():
+    	brands_list.append(brand)
+    print brands_list
 
 
 def get_models_between(start_year, end_year):
-    pass
+    models_list = []
+    models = Model.query.filter(Model.year > start_year, Model.year < end_year)
+    for model in models.all():
+    	models_list.append(model)
+    print models_list
+    	
 
 # -------------------------------------------------------------------
 
 # Part 3: Discussion Questions (Include your answers as comments.)
 
 # 1. What is the returned value and datatype of ``Brand.query.filter_by(name='Ford')``?
+#Answer the value is a query that Python translates into something SQLite can understand. 
+#The datatype is a SQLAlchemy base query class which inherits from SQLAlchemy model.
 
 # 2. In your own words, what is an association table, and what *type* of relationship
 # does an association table manage?
+#Answer: An association table is a table which links/bridges two related tables.
+#The association table creates a one-to-many relationship with each of the related tables.
+#Without the association table, the two related tables would rely on many-to-many relationship 
+#to link them, which is not supported by SQL, and causes massive headaches when other programs do.
